@@ -1,0 +1,6 @@
+{
+  "name": "K & O Vacations",
+  "description": "Luxury Sri Lankan travel & bespoke tour company offering curated wildlife safaris, cultural heritage journeys, and northern island expeditions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
