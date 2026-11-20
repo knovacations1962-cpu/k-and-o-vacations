@@ -51,7 +51,7 @@ export default function TourDetailPage() {
     alt: `${tour.title} — View ${idx + 1}`,
     title: tour.title,
     location: tour.region,
-    category: 'Heritage & Temples',
+    category: 'Private Sri Lanka Tours',
   }));
 
   const whatsappHref = buildWhatsAppUrl(

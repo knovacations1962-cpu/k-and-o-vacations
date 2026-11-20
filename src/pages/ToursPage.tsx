@@ -12,18 +12,18 @@ const FILTER_OPTIONS: Array<'All' | TourCategory> = [
   'All',
   'Cultural Heritage',
   'Wildlife Safaris',
-  'Northern Sri Lanka',
   'Nature & Highlands',
-  'Bird Watching',
+  'Northern Sri Lanka',
   'Coastal & Village',
+  'Bird Watching',
 ];
 
 const DESTINATION_EXPERIENCES = [
   {
     title: 'Ancient Cities & Heritage Sites',
-    region: 'Sigiriya · Polonnaruwa · Anuradhapura',
-    image: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.42.25_70c3edbb.jpeg',
-    description: 'Walk through royal citadels, brick stupas, and medieval monastic complexes.',
+    region: 'Sigiriya · Polonnaruwa · Dambulla',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.15_a900dab5.jpeg',
+    description: 'Walk through royal citadels, Vatadage shrines, cave temples, and granite Buddhas.',
   },
   {
     title: 'Wildlife Safaris',
@@ -34,8 +34,8 @@ const DESTINATION_EXPERIENCES = [
   {
     title: 'Elephant Experiences',
     region: 'Pinnawala · Minneriya · Udawalawe',
-    image: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.15.21_2c60cd62.jpeg',
-    description: 'Witness gentle tuskers and wild elephant herds along forest corridors and lakes.',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.15__1__021559e6.jpeg',
+    description: 'Witness gentle tuskers and wild elephant herds along forest corridors and rivers.',
   },
   {
     title: 'Bird Watching',
@@ -44,28 +44,28 @@ const DESTINATION_EXPERIENCES = [
     description: 'Spot bee-eaters, changeable hawk-eagles, painted storks, peacocks, and junglefowl.',
   },
   {
-    title: 'Nature, Gardens & Waterfalls',
-    region: 'Peradeniya · Kandy · Hatton',
-    image: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.42.29_1621b5b5.jpeg',
-    description: 'Stroll beneath towering tropical canopies, botanical lawns, and highland cascades.',
+    title: 'Nature, Gardens & Tea Hills',
+    region: 'Peradeniya · Hatton · Nuwara Eliya',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.11__1__73466e10.jpeg',
+    description: 'Stroll beneath towering tropical canopies, botanical lawns, and terraced tea lakes.',
   },
   {
     title: 'Cultural Experiences',
-    region: 'Habarana · Matale · Cultural Route',
-    image: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.07.44_bd8c7501.jpeg',
-    description: 'Ride traditional village bullock carts and visit vibrant polychrome kovils.',
+    region: 'Kandy · Habarana · Matale',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.13_5a5ed731.jpeg',
+    description: 'Visit Kandy’s Sacred Temple of the Tooth, village bullock carts, and highland kovils.',
   },
   {
-    title: 'Beaches & Coastal Destinations',
-    region: 'Koggala · Weligama · Galle',
-    image: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.42.26_0dbbae67.jpeg',
-    description: 'Experience southern coastal stilt fishing, golden bays, and sunset ocean walks.',
+    title: 'Beaches & Historic Coast',
+    region: 'Galle Fort · Koggala · Weligama',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.12__1__33e7024d.jpeg',
+    description: 'Explore Galle Dutch Fort’s lighthouse ramparts, coastal stilt fishing, and golden bays.',
   },
   {
-    title: 'Adventure Tours',
-    region: "Sri Pada (Adam's Peak) · Ridge Trails",
-    image: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.42.28_f5da09a8.jpeg',
-    description: 'Ascend misty mountain summits and traverse scenic highland passes at sunrise.',
+    title: 'Highland Rail & Adventure',
+    region: "Ella Nine Arch Bridge · Sri Pada (Adam's Peak)",
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.15__2__5c298f5e.jpeg',
+    description: 'Ride the blue train across stone viaducts and ascend misty mountain summits.',
   },
   {
     title: 'Northern Sri Lanka Travel',
@@ -74,10 +74,10 @@ const DESTINATION_EXPERIENCES = [
     description: 'Explore Nallur Kandaswamy Kovil, historic Jaffna Clock Tower, and northern islands.',
   },
   {
-    title: 'Scenic Landscapes',
-    region: 'Hill Country · Tea Estates · Plains',
-    image: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.12.08_26838331.jpeg',
-    description: 'Take in sweeping views from mist-shrouded tea ridges to tranquil island reservoirs.',
+    title: 'Scenic City & Sunset Horizons',
+    region: 'Colombo · Central Highlands',
+    image: '/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.13__1__d2343757.jpeg',
+    description: 'Take in golden sunsets from Colombo’s Lotus Tower skyline to mist-draped stupas.',
   },
 ];
 
@@ -178,13 +178,13 @@ export default function ToursPage() {
             {DESTINATION_EXPERIENCES.map((exp) => (
               <div
                 key={exp.title}
-                className="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#111114]"
+                className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#111114] transition-colors hover:border-[#D4AF37]/40"
               >
                 <div className="aspect-[4/3] overflow-hidden bg-[#070708]">
                   <ResilientImage
                     src={exp.image}
                     alt={exp.title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-4">

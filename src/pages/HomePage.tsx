@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, MessageCircle, Play, Quote } from 'lucide-react';
+import { ArrowRight, Expand, MapPin, MessageCircle, Play, Quote } from 'lucide-react';
 import { BRAND, buildWhatsAppUrl } from '../data/brand';
 import { GALLERY_PHOTOS, TRAVEL_VIDEOS } from '../data/media';
 import { EXPERIENCE_PILLARS, TOUR_PACKAGES } from '../data/tours';
@@ -14,7 +14,7 @@ const TESTIMONIALS = [
     name: 'Charlotte & David Henderson',
     origin: 'United Kingdom · 10-Day Heritage & Safari Circuit',
     quote:
-      'From our dawn climb up Sigiriya to watching two wild elephants cross a forest road right ahead of us, K & O Vacations arranged every detail with quiet warmth and deep local knowledge.',
+      'From our dawn climb up Sigiriya to watching wild elephants beside the river and riding the train over Nine Arch Bridge, K & O Vacations arranged every detail with quiet warmth and deep local knowledge.',
   },
   {
     name: 'Markus Lindqvist',
@@ -26,9 +26,17 @@ const TESTIMONIALS = [
     name: 'Priya & Arjun Subramanian',
     origin: 'Singapore · Northern Sri Lanka & Highlands',
     quote:
-      'Traveling up to Jaffna for Nallur Kandaswamy Kovil and then down to Peradeniya Gardens and the southern coast felt seamless. Our chauffeur was punctual, attentive, and genuinely proud of his island.',
+      'Traveling up to Jaffna for Nallur Kandaswamy Kovil and then down to Kandy’s Sacred Tooth Temple, Galle Fort, and the tea hills felt seamless. Our chauffeur was punctual and attentive.',
   },
 ];
+
+const GALLERY_CATEGORY_LINKS = [
+  'Ancient Temples & Cultural Heritage',
+  'Sri Lankan Highlands',
+  'Nature & Scenic Landscapes',
+  'Historical Attractions',
+  'Private Sri Lanka Tours',
+] as const;
 
 export default function HomePage() {
   useDocumentMeta({
@@ -38,8 +46,8 @@ export default function HomePage() {
   });
 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const featuredTours = TOUR_PACKAGES.filter((tour) => tour.featured);
-  const previewPhotos = GALLERY_PHOTOS.filter((photo) => photo.featured).slice(0, 6);
+  const featuredTours = TOUR_PACKAGES.filter((tour) => tour.featured).slice(0, 4);
+  const previewPhotos = GALLERY_PHOTOS.filter((photo) => photo.featured).slice(0, 9);
   const heroVideo = TRAVEL_VIDEOS[0];
 
   return (
@@ -116,8 +124,8 @@ export default function HomePage() {
               </h2>
             </div>
             <p className="max-w-md text-sm leading-relaxed text-[#A9A295]">
-              Every journey is tailored to your pace—from Cultural Triangle ruins and Big Three
-              safaris to Northern heritage and misty tea country.
+              Every journey is tailored to your pace—from Cultural Triangle ruins and wildlife
+              safaris to misty highland rails and historic coastal forts.
             </p>
           </div>
 
@@ -182,7 +190,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Wildlife, Heritage & Northern Asymmetric Showcase */}
+      {/* 4. Wildlife, Heritage & Highland Asymmetric Showcase */}
       <section className="border-b border-white/10 bg-[#0B0B0D] py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
@@ -195,25 +203,25 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12">
-            {/* Large Wildlife Feature */}
+            {/* Large Highland & Heritage Feature */}
             <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-[#111114] lg:col-span-7">
               <div className="aspect-[16/10] w-full overflow-hidden lg:h-full">
                 <ResilientImage
-                  src="/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.18.51_0e0ffdfe.jpeg"
-                  alt="Sri Lankan leopard walking across open sandy forest clearing"
+                  src="/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.15__2__5c298f5e.jpeg"
+                  alt="Blue Sri Lankan highland train crossing Nine Arch Bridge in Ella"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[#070708]/95 via-[#070708]/35 to-transparent p-6 sm:p-8">
                 <span className="text-xs font-medium text-[#D4AF37]">
-                  Wildlife Safaris · Yala &amp; Wilpattu
+                  Sri Lankan Highlands · Ella &amp; Kandy
                 </span>
                 <h3 className="font-display mt-1 text-2xl font-semibold text-[#F6F3EC] sm:text-3xl">
-                  Leopards, Sloth Bears &amp; Wild Elephants
+                  Scenic Mountain Rail, Tea Gardens &amp; Sacred Temples
                 </h3>
                 <p className="mt-2 max-w-xl text-sm text-[#D6D0C4]">
-                  Private 4x4 safari drives timed for quiet dawn light along dry-zone lakes and
-                  coastal scrub jungles.
+                  Journey through misty tea ridges over the Nine Arch Bridge, visit Kandy’s Temple
+                  of the Sacred Tooth Relic, and stroll sunlit botanical gardens.
                 </p>
               </div>
             </div>
@@ -223,17 +231,17 @@ export default function HomePage() {
               <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-[#111114]">
                 <div className="aspect-[16/10] w-full overflow-hidden">
                   <ResilientImage
-                    src="/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.42.25_70c3edbb.jpeg"
-                    alt="Ancient brick ruins of Polonnaruwa Lankathilaka Image House"
+                    src="/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.11_c35a5573.jpeg"
+                    alt="Row of gilded Buddha statues inside Dambulla Royal Cave Temple"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[#070708]/95 via-[#070708]/35 to-transparent p-6">
                   <span className="text-xs font-medium text-[#D4AF37]">
-                    Cultural Triangle · Polonnaruwa &amp; Sigiriya
+                    Cultural Triangle · Dambulla &amp; Polonnaruwa
                   </span>
                   <h3 className="font-display mt-1 text-2xl font-semibold text-[#F6F3EC]">
-                    Ancient Kingdoms &amp; Sacred Temples
+                    Ancient Cave Temples &amp; Royal Ruins
                   </h3>
                 </div>
               </div>
@@ -241,17 +249,17 @@ export default function HomePage() {
               <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-[#111114]">
                 <div className="aspect-[16/10] w-full overflow-hidden">
                   <ResilientImage
-                    src="/assets/aistudio/WhatsApp_Image_2026-11-13_at_13.42.26_0dbbae67.jpeg"
-                    alt="Southern Sri Lanka stilt fishermen perched above rolling Indian Ocean waves"
+                    src="/assets/aistudio/WhatsApp_Image_2026-11-20_at_19.28.12__2__8cb26856.jpeg"
+                    alt="Galle Dutch Fort stone ramparts overlooking the Indian Ocean"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[#070708]/95 via-[#070708]/35 to-transparent p-6">
                   <span className="text-xs font-medium text-[#D4AF37]">
-                    Coast &amp; Highlands · Koggala to Sri Pada
+                    Historical Attractions · Galle Dutch Fort
                   </span>
                   <h3 className="font-display mt-1 text-2xl font-semibold text-[#F6F3EC]">
-                    Coastal Traditions &amp; Misty Peaks
+                    Colonial Ramparts &amp; Turquoise Coastlines
                   </h3>
                 </div>
               </div>
@@ -260,46 +268,69 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Travel Photography & Video Gallery Preview */}
-      <section className="border-b border-white/10 bg-[#070708] py-20">
+      {/* 5. Travel Gallery Showcase Section */}
+      <section id="travel-gallery" className="border-b border-white/10 bg-[#070708] py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-[#D4AF37] uppercase">
-                Through Our Lens
+                Travel Gallery
               </p>
               <h2 className="font-display mt-2 text-3xl font-semibold text-[#F6F3EC] sm:text-5xl">
-                Sri Lanka Field Gallery
+                Sri Lanka Field Photography
               </h2>
             </div>
             <Link
               to="/gallery"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37] transition-colors hover:text-[#E5C55B]"
             >
-              Open Full Photo &amp; Video Gallery
+              Explore All {GALLERY_PHOTOS.length} Photos &amp; Videos
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Quick Category Shortcuts */}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {GALLERY_CATEGORY_LINKS.map((cat) => (
+              <Link
+                key={cat}
+                to={`/gallery?category=${encodeURIComponent(cat)}`}
+                className="inline-flex min-h-[38px] items-center rounded-md border border-white/15 bg-[#111114] px-3.5 py-1.5 text-xs font-medium text-[#D6D0C4] transition-colors hover:border-[#D4AF37]/50 hover:text-[#D4AF37]"
+              >
+                {cat}
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {previewPhotos.map((photo, index) => (
               <button
                 key={photo.id}
                 type="button"
                 onClick={() => setLightboxIndex(index)}
-                className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-[#111114] text-left focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
+                className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-[#111114] text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-[#D4AF37]/50 focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
               >
                 <ResilientImage
                   src={photo.src}
                   alt={photo.alt}
                   fallbackTitle={photo.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[#070708]/90 via-transparent to-transparent p-5 opacity-95 transition-opacity group-hover:opacity-100">
-                  <span className="text-xs text-[#D4AF37]">{photo.category}</span>
-                  <span className="font-display mt-0.5 text-xl font-semibold text-[#F6F3EC]">
-                    {photo.title}
-                  </span>
+                <div className="absolute inset-0 flex flex-col justify-between bg-gradient-to-t from-[#070708]/95 via-[#070708]/15 to-transparent p-5">
+                  <div className="flex justify-end">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-black/60 text-[#F6F3EC] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                      <Expand className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-xs text-[#D4AF37]">
+                      {photo.category} <span aria-hidden="true">·</span>{' '}
+                      <span className="text-[#D6D0C4]">{photo.location}</span>
+                    </span>
+                    <span className="font-display mt-0.5 block text-xl font-semibold text-[#F6F3EC]">
+                      {photo.title}
+                    </span>
+                  </div>
                 </div>
               </button>
             ))}

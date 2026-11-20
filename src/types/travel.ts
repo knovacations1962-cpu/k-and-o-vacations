@@ -32,13 +32,17 @@ export interface TourPackage {
   featured?: boolean;
 }
 
-export type GalleryCategory =
-  | 'All'
-  | 'Wildlife'
-  | 'Heritage & Temples'
-  | 'Northern Sri Lanka'
+export type GalleryCategoryName =
+  | 'Ancient Temples & Cultural Heritage'
+  | 'Sri Lankan Highlands'
+  | 'Nature & Scenic Landscapes'
+  | 'Historical Attractions'
+  | 'Private Sri Lanka Tours'
+  | 'Wildlife & Safaris'
   | 'Birds & Peacocks'
-  | 'Nature & Coast';
+  | 'Northern Sri Lanka';
+
+export type GalleryCategory = 'All' | GalleryCategoryName;
 
 export interface GalleryPhoto {
   id: string;
@@ -46,7 +50,8 @@ export interface GalleryPhoto {
   alt: string;
   title: string;
   location: string;
-  category: Exclude<GalleryCategory, 'All'>;
+  category: GalleryCategoryName;
+  secondaryCategories?: GalleryCategoryName[];
   featured?: boolean;
 }
 

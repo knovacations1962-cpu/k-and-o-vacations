@@ -6,6 +6,7 @@ interface ResilientImageProps {
   alt: string;
   className?: string;
   loading?: 'lazy' | 'eager';
+  fetchPriority?: 'high' | 'low' | 'auto';
   fallbackTitle?: string;
 }
 
@@ -14,9 +15,11 @@ export default function ResilientImage({
   alt,
   className = '',
   loading = 'lazy',
+  fetchPriority = 'auto',
   fallbackTitle,
 }: ResilientImageProps) {
   const [hasError, setHasError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   if (hasError) {
     return (
@@ -38,9 +41,14 @@ export default function ResilientImage({
       src={src}
       alt={alt}
       loading={loading}
+      decoding="async"
+      fetchPriority={fetchPriority}
       referrerPolicy="no-referrer"
+      onLoad={() => setIsLoaded(true)}
       onError={() => setHasError(true)}
-      className={className}
+      className={`${className} transition-opacity duration-300 ${
+        isLoaded ? 'opacity-100' : 'opacity-90'
+      }`}
     />
   );
 }
